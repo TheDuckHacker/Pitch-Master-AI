@@ -17,6 +17,13 @@ from datetime import datetime
 import librosa
 import numpy as np
 
+# Intentar cargar variables de entorno desde .env
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass  # python-dotenv no está instalado, usar solo variables de entorno del sistema
+
 app = FastAPI(title="PitchMaster AI API")
 
 # Configuración CORS para permitir conexiones desde Flutter
