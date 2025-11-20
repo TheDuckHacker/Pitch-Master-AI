@@ -33,7 +33,13 @@ WHISPER_MODEL = None
 GROQ_CLIENT = None
 
 # API Key de Groq - Obtener de variable de entorno o archivo .env
+# Para usar archivo .env, instala python-dotenv: pip install python-dotenv
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+
+# Si no hay API key, mostrar advertencia
+if not GROQ_API_KEY:
+    print("⚠️  ADVERTENCIA: GROQ_API_KEY no está configurada. El análisis con LLM no funcionará.")
+    print("   Configura la variable de entorno GROQ_API_KEY o crea un archivo .env")
 
 @app.on_event("startup")
 async def startup_event():
